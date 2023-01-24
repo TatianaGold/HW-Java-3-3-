@@ -1,11 +1,11 @@
 public class CreditPaymentService {
-    public int calculate (int a, int b) {
+    public int calculate (int creditAmount, int period) {
         double percent = (9.99 / 100) / 12;
-        double m = b * 12;
-        double y = Math.pow((1+percent), m);
-        double k = percent * y / (y - 1);
+        double months = period * 12;
+        double interestRate = Math.pow((1+percent), months);
+        double annuityRatio = percent * interestRate / (interestRate - 1);
 
-        int result = (int) (a * k);
+        int result = (int) (creditAmount * annuityRatio);
         return result;
     }
 }
